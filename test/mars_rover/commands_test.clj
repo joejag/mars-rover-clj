@@ -5,14 +5,14 @@
             [mars-rover.rotator :as compass]))
 
 (fact "understands move command"
-      (subject/command-parser ..robot.. "M") => irrelevant
+      (subject/command-executer ..robot.. "M") => irrelevant
       (provided
-        (mover/move ..robot..) => anything))
+        (mover/move-robot ..robot..) => anything))
 
 (fact "understands rotate command"
-      (subject/command-parser ..robot.. "L") => irrelevant
+      (subject/command-executer ..robot.. "L") => irrelevant
       (provided
         (compass/rotate-robot ..robot.. "L") => anything))
 
 (fact "can command robot"
-      (subject/command-robot {:cords [2 2] :direction "N"} "lM") > {:cords [1 2] :direction "W"})
+      (subject/run-commands-on-robot {:cords [2 2] :direction "N"} "lM") > {:cords [1 2] :direction "W"})

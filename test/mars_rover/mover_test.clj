@@ -3,7 +3,7 @@
             [mars-rover.mover :as subject]))
 
 (tabular "move x y cordinate based off compass direction"
-         (fact (subject/move {:cords [1 1] :direction ?direction}) => {:cords ?new-cords :direction ?direction})
+         (fact (subject/move-robot {:cords [1 1] :direction ?direction}) => {:cords ?new-cords :direction ?direction})
          ?direction ?new-cords
          "N" [1 2]
          "E" [2 1]

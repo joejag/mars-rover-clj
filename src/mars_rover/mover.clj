@@ -6,5 +6,5 @@
    "S" (fn [[x y]] [x       (dec y)])
    "W" (fn [[x y]] [(dec x) y])})
 
-(defn move [{:keys [cords direction]}]
+(defn move-robot [{:keys [cords direction]}]
   {:cords ((get cord-movers direction) cords) :direction direction})

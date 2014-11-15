@@ -2,17 +2,17 @@
   (:require [mars-rover.rotator :as compass]
             [mars-rover.mover :as mover]))
 
-(def commands
-  {"M" (fn [robot _] (mover/move robot))
+(def available-commands
+  {"M" (fn [robot _] (mover/move-robot robot))
    "L" (fn [robot direction] (compass/rotate-robot robot direction))
    "R" (fn [robot direction] (compass/rotate-robot robot direction))})
 
-(defn command-parser [robot command]
-  ((get commands command (constantly robot)) robot command))
+(defn command-executer [robot command]
+  ((get available-commands command (constantly robot)) robot command))
 
-(defn command-robot [starting-robot commands]
+(defn run-commands-on-robot [starting-robot commands]
   (reduce
     (fn [updated-robot command]
-      (command-parser updated-robot command))
+      (command-executer updated-robot command))
     starting-robot
     (clojure.string/split commands #"")))

@@ -1,4 +1,4 @@
-(ns mars-rover.robot-factory)
+(ns mars-rover.robot-mapper)
 
 (defn string->robot [str]
   (let [splitted (clojure.string/split str #" ")
